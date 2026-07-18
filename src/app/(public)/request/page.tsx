@@ -1,16 +1,16 @@
-import { PagePlaceholder } from "@/components/page-placeholder";
-import { requireAccount } from "@/lib/server-auth";
+import type { Metadata } from "next";
 
-export default async function RequestPage() {
-  await requireAccount();
+import { CustomerIntake } from "@/components/customer-intake";
 
+export const metadata: Metadata = {
+  title: "Request help",
+  description: "Start a non-emergency household request with a safety check.",
+};
+
+export default function RequestPage() {
   return (
-    <main className="mx-auto max-w-3xl px-5 py-12 sm:px-8 sm:py-16">
-      <PagePlaceholder
-        description="The customer workstream will add emergency screening, configured service choices, review, and confirmation here."
-        eyebrow="Customer intake"
-        title="Tell us what needs attention"
-      />
+    <main className="section-shell py-10 sm:py-14 lg:py-16">
+      <CustomerIntake />
     </main>
   );
 }

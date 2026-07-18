@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import { AccountRoleChoice } from "@/components/account-role-choice";
 
 export const metadata: Metadata = {
-  title: "Get started",
+  title: "Request help or apply",
   description:
-    "Sign in or create a Vun account as a customer or local service business.",
+    "Request household help as a customer or apply as a local service business.",
 };
 
 export default function GetStartedPage() {
@@ -15,7 +15,7 @@ export default function GetStartedPage() {
   );
 
   return (
-    <main className="mx-auto w-full max-w-3xl px-5 py-12 sm:px-8 sm:py-20">
+    <main className="section-shell py-10 sm:py-14 lg:py-16">
       <AccountRoleChoice clerkConfigured={clerkConfigured} />
     </main>
   );

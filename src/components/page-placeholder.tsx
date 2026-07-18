@@ -10,10 +10,10 @@ export function PagePlaceholder({
   description: string;
 }) {
   return (
-    <Card className="border-evergreen/15 bg-card">
+    <Card>
       <CardHeader>
         <p className="eyebrow">{eyebrow}</p>
-        <CardTitle className="display-type text-3xl text-evergreen">
+        <CardTitle className="display-type text-3xl font-extrabold text-ink">
           {title}
         </CardTitle>
       </CardHeader>

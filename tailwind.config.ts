@@ -13,7 +13,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ["var(--font-source-sans)", "Arial", "sans-serif"],
-        display: ["var(--font-newsreader)", "Georgia", "serif"],
+        display: ["var(--font-manrope)", "Arial", "sans-serif"],
       },
       colors: {
         background: "hsl(var(--background))",
@@ -49,10 +49,18 @@ export default {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        ink: "#17201D",
-        evergreen: "#173F35",
-        amber: "#D98F39",
-        cream: "#F5F1E8",
+        ink: "#1F2529",
+        slate: "#59646C",
+        brand: "#C93C1F",
+        "brand-dark": "#A52E16",
+        canvas: "#F6F7F8",
+        panel: "#FFFFFF",
+        info: "#245F8F",
+        success: "#23734D",
+        warning: "#9A5B00",
+        evergreen: "#1F2529",
+        amber: "#C93C1F",
+        cream: "#F6F7F8",
         chart: {
           "1": "hsl(var(--chart-1))",
           "2": "hsl(var(--chart-2))",
@@ -67,7 +75,8 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       boxShadow: {
-        lifted: "0 22px 60px rgba(23, 32, 29, 0.12)",
+        lifted: "0 18px 48px rgba(31, 37, 41, 0.1)",
+        control: "0 1px 2px rgba(31, 37, 41, 0.08)",
       },
     },
   },
