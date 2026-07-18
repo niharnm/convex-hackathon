@@ -1,4 +1,12 @@
 .agents/skills/
 .claude/skills/
+.convex/
+.next/
+coverage/
 convex/_generated/
 example/convex/_generated/
+node_modules/
+outputs/
+playwright-report/
+test-results/
+work/

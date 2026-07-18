@@ -22,7 +22,7 @@ export function PublicShell({ children }: { children: ReactNode }) {
               How it works
             </Link>
             <Button asChild size="sm">
-              <Link href={routes.request}>Request help</Link>
+              <Link href="/get-started">Get started</Link>
             </Button>
           </nav>
         </div>
@@ -30,7 +30,7 @@ export function PublicShell({ children }: { children: ReactNode }) {
       {children}
       <footer className="border-t border-evergreen/15 bg-evergreen px-5 py-8 text-primary-foreground sm:px-8">
         <div className="mx-auto flex max-w-6xl flex-col justify-between gap-4 text-sm sm:flex-row">
-          <p>One Number is for non-emergency household requests.</p>
+          <p>Vun is for non-emergency household requests.</p>
           <p>
             For immediate danger, call 911 or the appropriate emergency service.
           </p>

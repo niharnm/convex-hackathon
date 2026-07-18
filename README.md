@@ -1,6 +1,6 @@
-# One Number
+# Vun
 
-One Number is a human-backed dispatch workflow for urgent, non-emergency household problems. A customer describes the issue once, a staff operator reviews it, and an eligible local provider can accept a time-limited offer.
+Vun is a human-backed dispatch workflow for urgent, non-emergency household problems. A customer describes the issue once, a staff operator reviews it, and an eligible local provider can accept a time-limited offer.
 
 This repository contains the responsive web MVP. It does **not** send real calls or messages, process payments, automate dispatch, or include iOS code.
 
@@ -11,7 +11,7 @@ This repository contains the responsive web MVP. It does **not** send real calls
 3. Copy the Clerk and Convex values described in `.env.example` into `.env.local`.
 4. Run `npm run dev` to start Convex and Next.js together.
 
-Without Clerk keys, public routes still render and `/ops/**` redirects to `/setup`. Staff functions remain protected server-side once the backend is implemented.
+Without Clerk keys, marketing routes still render while customer, business, and staff account routes redirect to `/setup`. Set `VUN_STAFF_USER_IDS` to the comma-separated Clerk user IDs allowed into `/ops/**`; public signup intent never grants staff access. Staff Convex functions must also enforce authorization server-side as they are implemented.
 
 ## Checks
 
@@ -25,9 +25,10 @@ Without Clerk keys, public routes still render and `/ops/**` redirects to `/setu
 
 | Area                   | MVP behavior                                          |
 | ---------------------- | ----------------------------------------------------- |
-| Customer intake/status | Real Convex-backed web flow, no account               |
-| Staff operations       | Clerk-protected manual review and dispatch            |
-| Provider response      | Expiring capability link, no account                  |
+| Customer intake/status | Clerk-gated entry; intake/status work in progress     |
+| Business onboarding    | Clerk entry; pending-profile workspace shell          |
+| Staff operations       | Clerk plus explicit allowlist; manual review/dispatch |
+| Provider response      | Expiring capability link; raw tokens remain secret    |
 | Communications         | Deterministic simulator only                          |
 | Payments               | Not included                                          |
 | Voice/SMS provider     | Twilio-shaped interface only; no SDK or network calls |

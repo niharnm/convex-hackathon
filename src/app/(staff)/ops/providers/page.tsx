@@ -1,6 +1,9 @@
 import { PagePlaceholder } from "@/components/page-placeholder";
+import { requireStaff } from "@/lib/server-auth";
 
-export default function ProvidersPage() {
+export default async function ProvidersPage() {
+  await requireStaff();
+
   return (
     <PagePlaceholder
       description="Manage provider coverage, availability, restrictions, probation, and each verification check separately."

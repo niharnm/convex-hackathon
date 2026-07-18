@@ -7,7 +7,6 @@ import {
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { routes } from "@/contracts/routes";
 
 const steps = [
   {
@@ -43,7 +42,7 @@ export default function HomePage() {
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Button asChild className="h-12 px-6 text-base" size="lg">
-              <Link href={routes.request}>
+              <Link href="/get-started">
                 Request help <ArrowRight aria-hidden="true" />
               </Link>
             </Button>
@@ -108,7 +107,9 @@ export default function HomePage() {
           <div className="flex max-w-3xl items-start gap-4">
             <Headphones aria-hidden="true" className="mt-1 size-7 text-amber" />
             <div>
-              <p className="eyebrow">A single handoff, not a marketplace</p>
+              <p className="eyebrow">
+                A managed network, with a person in the middle
+              </p>
               <h2 className="display-type mt-3 text-4xl text-evergreen sm:text-5xl">
                 What happens after you ask
               </h2>

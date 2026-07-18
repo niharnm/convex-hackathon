@@ -1,0 +1,51 @@
+import type { CommunicationRecord } from "./types";
+
+const baseTime = Date.UTC(2026, 6, 18, 17, 30, 0);
+
+export const demoOutbox: CommunicationRecord[] = [
+  {
+    id: "mock_demo_confirmation",
+    channel: "sms",
+    template: "request_confirmation",
+    recipientMasked: "••• ••• ••12",
+    status: "simulated_sent",
+    attemptCount: 1,
+    createdAt: baseTime,
+    updatedAt: baseTime,
+    lastError: null,
+    mode: "MOCK_SIMULATED",
+    idempotencyFingerprint: "demo001",
+    externalReference: "SM_MOCK_demo001",
+    readyAt: null,
+  },
+  {
+    id: "mock_demo_offer",
+    channel: "sms",
+    template: "provider_offer",
+    recipientMasked: "••• ••• ••44",
+    status: "simulated_failed",
+    attemptCount: 1,
+    createdAt: baseTime - 60_000,
+    updatedAt: baseTime - 60_000,
+    lastError: "SIMULATED_PROVIDER_FAILURE",
+    mode: "MOCK_SIMULATED",
+    idempotencyFingerprint: "demo002",
+    externalReference: null,
+    readyAt: null,
+  },
+  {
+    id: "mock_demo_followup",
+    channel: "voice",
+    template: "outcome_follow_up",
+    recipientMasked: "••• ••• ••81",
+    status: "queued",
+    attemptCount: 1,
+    createdAt: baseTime - 120_000,
+    updatedAt: baseTime - 120_000,
+    lastError: null,
+    mode: "MOCK_SIMULATED",
+    idempotencyFingerprint: "demo003",
+    externalReference: null,
+    readyAt: baseTime + 2_000,
+  },
+];

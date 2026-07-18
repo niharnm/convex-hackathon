@@ -20,8 +20,8 @@ const sourceSans = Source_Sans_3({
 
 export const metadata: Metadata = {
   title: {
-    default: "One Number | Human-backed local help",
-    template: "%s | One Number",
+    default: "Vun | Finding help for YOU",
+    template: "%s | Vun",
   },
   description:
     "Describe a non-emergency household problem once. A person reviews it and coordinates a local service introduction.",

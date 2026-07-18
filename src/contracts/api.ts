@@ -16,7 +16,7 @@ import type {
   SubmitFeedbackInput,
 } from "@/contracts/domain";
 
-export interface OneNumberApiContract {
+export interface VunApiContract {
   publicRequests: {
     create(
       input: CreateServiceRequestInput,

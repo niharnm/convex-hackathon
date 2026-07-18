@@ -14,14 +14,15 @@ export default function SetupPage() {
             <KeyRound aria-hidden="true" className="size-5" />
           </span>
           <div>
-            <p className="eyebrow">Staff setup required</p>
+            <p className="eyebrow">Account setup required</p>
             <h1 className="display-type mt-2 text-4xl text-evergreen">
-              Operations stay locked
+              Account access stays locked
             </h1>
             <p className="mt-4 leading-7 text-muted-foreground">
               Add the Clerk development keys and issuer domain described in
-              .env.example before opening the dispatcher workspace. Public
-              request and provider-link pages do not require accounts.
+              .env.example before opening customer, business, or dispatcher
+              account routes. Staff access also requires an explicit Clerk user
+              ID allowlist.
             </p>
           </div>
         </div>

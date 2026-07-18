@@ -10,19 +10,23 @@ const clerkPublishableKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
 const convexClient = convexUrl ? new ConvexReactClient(convexUrl) : null;
 
 export function AppProviders({ children }: { children: ReactNode }) {
-  if (!convexClient) {
-    return children;
-  }
-
   if (!clerkPublishableKey) {
-    return <ConvexProvider client={convexClient}>{children}</ConvexProvider>;
+    return convexClient ? (
+      <ConvexProvider client={convexClient}>{children}</ConvexProvider>
+    ) : (
+      children
+    );
   }
 
   return (
     <ClerkProvider publishableKey={clerkPublishableKey}>
-      <ConvexProviderWithClerk client={convexClient} useAuth={useAuth}>
-        {children}
-      </ConvexProviderWithClerk>
+      {convexClient ? (
+        <ConvexProviderWithClerk client={convexClient} useAuth={useAuth}>
+          {children}
+        </ConvexProviderWithClerk>
+      ) : (
+        children
+      )}
     </ClerkProvider>
   );
 }

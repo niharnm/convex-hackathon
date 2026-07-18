@@ -1,6 +1,9 @@
 import { PagePlaceholder } from "@/components/page-placeholder";
+import { requireAccount } from "@/lib/server-auth";
 
-export default function RequestPage() {
+export default async function RequestPage() {
+  await requireAccount();
+
   return (
     <main className="mx-auto max-w-3xl px-5 py-12 sm:px-8 sm:py-16">
       <PagePlaceholder

@@ -11,7 +11,7 @@ export default function NotFound() {
           That handoff is not here
         </h1>
         <p className="mt-4 text-muted-foreground">
-          Check the link or return to One Number to start a new request.
+          Check the link or return to Vun to start a new request.
         </p>
         <Button asChild className="mt-7">
           <Link href="/">Return home</Link>
