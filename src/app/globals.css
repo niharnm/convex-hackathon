@@ -1,37 +1,39 @@
+@import "@clerk/ui/themes/shadcn.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 42 38% 94%;
-    --foreground: 160 14% 11%;
-    --card: 42 44% 97%;
-    --card-foreground: 160 14% 11%;
-    --popover: 42 44% 97%;
-    --popover-foreground: 160 14% 11%;
-    --primary: 165 46% 17%;
-    --primary-foreground: 42 44% 97%;
-    --secondary: 38 31% 88%;
-    --secondary-foreground: 165 46% 17%;
-    --muted: 39 24% 89%;
-    --muted-foreground: 158 8% 38%;
-    --accent: 31 66% 54%;
-    --accent-foreground: 160 14% 11%;
-    --destructive: 4 66% 44%;
-    --destructive-foreground: 42 44% 97%;
-    --border: 36 20% 79%;
-    --input: 36 20% 79%;
-    --ring: 31 66% 45%;
-    --success: 151 43% 31%;
-    --warning: 39 81% 42%;
-    --info: 207 54% 38%;
-    --chart-1: 165 46% 17%;
-    --chart-2: 31 66% 54%;
-    --chart-3: 207 54% 38%;
-    --chart-4: 151 43% 31%;
-    --chart-5: 4 66% 44%;
-    --radius: 0.9rem;
+    --background: 210 17% 97%;
+    --foreground: 203 14% 14%;
+    --card: 0 0% 100%;
+    --card-foreground: 203 14% 14%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 203 14% 14%;
+    --primary: 11 74% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 18% 93%;
+    --secondary-foreground: 203 14% 14%;
+    --muted: 210 14% 94%;
+    --muted-foreground: 204 10% 39%;
+    --accent: 12 72% 95%;
+    --accent-foreground: 11 77% 34%;
+    --destructive: 2 67% 42%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 210 13% 86%;
+    --input: 210 13% 78%;
+    --ring: 11 74% 45%;
+    --success: 151 53% 29%;
+    --warning: 36 100% 30%;
+    --info: 205 60% 35%;
+    --chart-1: 11 74% 45%;
+    --chart-2: 205 60% 35%;
+    --chart-3: 151 53% 29%;
+    --chart-4: 36 100% 30%;
+    --chart-5: 203 14% 14%;
+    --radius: 0.75rem;
   }
 
   * {
@@ -40,60 +42,95 @@
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
   }
 
   body {
     @apply bg-background text-foreground;
     min-height: 100vh;
-    background-image:
-      radial-gradient(
-        circle at 15% 0%,
-        rgb(217 143 57 / 10%),
-        transparent 30rem
-      ),
-      linear-gradient(rgb(23 63 53 / 3%) 1px, transparent 1px);
-    background-size:
-      auto,
-      100% 3rem;
+    text-rendering: optimizeLegibility;
   }
 
   ::selection {
-    background: rgb(217 143 57 / 30%);
+    background: rgb(201 60 31 / 22%);
   }
 
   :focus-visible {
-    outline: 3px solid rgb(184 113 31);
+    outline: 3px solid rgb(201 60 31);
     outline-offset: 3px;
   }
 }
 
 @layer components {
   .display-type {
-    font-family: var(--font-newsreader), Georgia, serif;
+    font-family: var(--font-manrope), Arial, sans-serif;
     font-optical-sizing: auto;
-  }
-
-  .handoff-line {
-    position: relative;
-  }
-
-  .handoff-line::before {
-    background: #d98f39;
-    border-radius: 999px;
-    content: "";
-    height: calc(100% - 1.5rem);
-    left: 0;
-    position: absolute;
-    top: 0.75rem;
-    width: 3px;
+    letter-spacing: -0.035em;
   }
 
   .eyebrow {
-    @apply text-xs font-semibold uppercase tracking-[0.18em] text-evergreen/70;
+    @apply text-xs font-bold uppercase tracking-[0.14em] text-brand;
   }
 
   .surface {
-    @apply rounded-[var(--radius)] border border-evergreen/15 bg-card shadow-sm;
+    @apply rounded-[var(--radius)] border border-border bg-card shadow-control;
+  }
+
+  .section-shell {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8;
+  }
+
+  .dispatch-rail {
+    @apply relative grid gap-5;
+  }
+
+  .dispatch-rail > li {
+    @apply relative grid min-w-0 grid-cols-[2rem_1fr] gap-3;
+  }
+
+  .dispatch-rail > li:not(:last-child)::after {
+    background: hsl(var(--border));
+    content: "";
+    height: calc(100% + 0.5rem);
+    left: 0.9375rem;
+    position: absolute;
+    top: 2rem;
+    width: 2px;
+  }
+
+  .dispatch-rail > li[data-state="complete"]:not(:last-child)::after {
+    background: #23734d;
+  }
+
+  .dispatch-marker {
+    @apply relative z-10 grid size-8 place-items-center rounded-full border-2 border-border bg-white text-xs font-bold text-muted-foreground;
+  }
+
+  [data-state="active"] > .dispatch-marker,
+  [data-state="overview"] > .dispatch-marker {
+    @apply border-brand bg-brand text-white;
+  }
+
+  [data-state="complete"] > .dispatch-marker {
+    @apply border-success bg-success text-white;
+  }
+}
+
+@media (min-width: 768px) {
+  .dispatch-rail[data-orientation="responsive"] {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .dispatch-rail[data-orientation="responsive"] > li {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .dispatch-rail[data-orientation="responsive"] > li:not(:last-child)::after {
+    height: 2px;
+    left: 2rem;
+    top: 0.9375rem;
+    width: calc(100% - 1rem);
   }
 }
 

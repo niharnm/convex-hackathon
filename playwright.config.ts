@@ -7,7 +7,7 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   reporter: "list",
   use: {
-    baseURL: "http://127.0.0.1:3000",
+    baseURL: "http://localhost:3000",
     trace: "on-first-retry",
   },
   projects: [
@@ -15,9 +15,10 @@ export default defineConfig({
     { name: "mobile", use: { ...devices["iPhone 13"] } },
   ],
   webServer: {
-    command: "npm run dev:web",
-    url: "http://127.0.0.1:3000",
-    reuseExistingServer: !process.env.CI,
+    command:
+      "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY= CLERK_SECRET_KEY= NEXT_PUBLIC_CONVEX_URL= npm run dev:web",
+    url: "http://localhost:3000",
+    reuseExistingServer: false,
     timeout: 120_000,
   },
 });

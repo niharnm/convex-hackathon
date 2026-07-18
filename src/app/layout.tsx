@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { Newsreader, Source_Sans_3 } from "next/font/google";
+import { Manrope, Source_Sans_3 } from "next/font/google";
 import type { ReactNode } from "react";
 
 import { AppProviders } from "@/components/providers/app-providers";
 
 import "./globals.css";
 
-const newsreader = Newsreader({
-  variable: "--font-newsreader",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
   display: "swap",
 });
@@ -20,7 +20,7 @@ const sourceSans = Source_Sans_3({
 
 export const metadata: Metadata = {
   title: {
-    default: "Vun | Finding help for YOU",
+    default: "Vun | One request for household help",
     template: "%s | Vun",
   },
   description:
@@ -29,10 +29,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
-      <body
-        className={`${newsreader.variable} ${sourceSans.variable} font-sans`}
-      >
+    <html data-scroll-behavior="smooth" lang="en">
+      <body className={`${manrope.variable} ${sourceSans.variable} font-sans`}>
         <AppProviders>{children}</AppProviders>
       </body>
     </html>
