@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 
 import { BrandMark } from "@/components/brand-mark";
+import { PublicAuthControls } from "@/components/public-auth-controls";
 import { Button } from "@/components/ui/button";
 import { routes } from "@/contracts/routes";
 
@@ -17,6 +18,11 @@ const navLinkClass =
   "rounded-lg px-3 py-2 text-sm font-bold text-foreground transition-colors duration-200 hover:bg-muted hover:text-brand";
 
 export function PublicShell({ children }: { children: ReactNode }) {
+  const clerkConfigured = Boolean(
+    process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY &&
+      process.env.CLERK_SECRET_KEY,
+  );
+
   return (
     <div className="flex min-h-screen flex-col">
       <header className="sticky top-0 z-50 border-b border-border bg-white/95 backdrop-blur-sm">
@@ -35,9 +41,13 @@ export function PublicShell({ children }: { children: ReactNode }) {
           </nav>
 
           <div className="ml-auto flex items-center gap-2 lg:ml-0">
-            <Button asChild>
-              <Link href="/get-started">Request help</Link>
-            </Button>
+            {clerkConfigured ? (
+              <PublicAuthControls />
+            ) : (
+              <Button asChild>
+                <Link href="/get-started">Request help</Link>
+              </Button>
+            )}
 
             <details className="group relative lg:hidden">
               <summary
